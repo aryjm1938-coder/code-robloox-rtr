@@ -1,228 +1,103 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Menu</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      background-color: #fff9c4; /* amarelo pastel */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: Arial, sans-serif;
-      color: white;
-      text-shadow:
-        -1px -1px 0 #000,
-         1px -1px 0 #000,
-        -1px  1px 0 #000,
-         1px  1px 0 #000; /* contorno preto */
-      overflow: hidden;
-      flex-direction: column;
-    }
-    .menu, .input-section {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      align-items: center;
-    }
-    .menu-item, button {
-      background-color: #fdd835; /* amarelo mais forte para contraste */
-      border-radius: 12px;
-      padding: 15px 30px;
-      text-align: center;
-      font-size: 1.2em;
-      cursor: pointer;
-      user-select: none;
-      box-shadow: 0 0 5px rgba(0,0,0,0.3);
-      transition: background-color 0.3s, transform 0.2s;
-      width: 250px;
-      color: black;
-      border: none;
-    }
-    .menu-item:hover, button:hover {
-      background-color: #fbc02d;
-      transform: scale(1.05);
-    }
-    .footer-credit {
-      position: fixed;
-      bottom: 10px;
-      right: 15px;
-      font-size: 0.9em;
-      color: white;
-      text-shadow:
-        -1px -1px 0 #000,
-         1px -1px 0 #000,
-        -1px  1px 0 #000,
-         1px  1px 0 #000;
-      user-select: none;
-    }
-    input {
-      padding: 10px;
-      border-radius: 8px;
-      border: 1px solid #ddd;
-      font-size: 1em;
-      width: 220px;
-    }
-    .back-btn {
-      background-color: transparent;
-      color: black;
-      border: none;
-      font-size: 1em;
-      cursor: pointer;
-      text-shadow:
-        -1px -1px 0 #000,
-         1px -1px 0 #000,
-        -1px  1px 0 #000,
-         1px  1px 0 #000;
-      margin-top: 10px;
-    }
-    .back-btn:hover {
-      text-decoration: underline;
-      color: #fbc02d;
-    }
-  </style>
-  <script>
-    function showInputSection() {
-      document.querySelector('.menu').style.display = 'none';
-      document.querySelector('.input-section').style.display = 'flex';
-    }
-    function confirmName() {
-      const name = document.getElementById('nameInput').value.trim();
-      if(!name) {
-        alert('Por favor, insira seu nome.');
-        return;
-      }
-      // Redirecionar para o link do Roblox após confirmar o nome
-      window.location.href = 'https://www.roblox.com/share?code=3a2c354996cacb4fb42ff47ce404b74f&type=Server';
-    }
-    function voltarPagina() {
-      if (window.history.length > 1) {
-        window.history.back();
-      } else {
-        document.querySelector('.input-section').style.display = 'none';
-        document.querySelector('.menu').style.display = 'flex';
-      }
-    }
-    function openPrivacidade() {
-      const novaJanela = window.open('', '_blank');
-      novaJanela.document.write(`
-        <!DOCTYPE html>
-        <html lang="pt-BR">
-        <head>
-          <title>Privacidade</title>
-          <style>
-            body {
-              margin: 0; height: 100vh;
-              display: flex; justify-content: center; align-items: center;
-              font-family: Arial, sans-serif;
-              font-size: 24px;
-              color: white;
-              background-color: #000;
-              text-shadow:
-                -1px -1px 0 #000,
-                 1px -1px 0 #000,
-                -1px  1px 0 #000,
-                 1px  1px 0 #000;
-              flex-direction: column;
-            }
-            button {
-              margin-top: 20px;
-              padding: 10px 20px;
-              font-size: 1em;
-              border-radius: 8px;
-              cursor: pointer;
-              background-color: #fdd835;
-              border: none;
-              color: black;
-              box-shadow: 0 0 5px rgba(0,0,0,0.3);
-              transition: background-color 0.3s;
-            }
-            button:hover {
-              background-color: #fbc02d;
-            }
-          </style>
-        </head>
-        <body>
-          Você não tem autorização para entrar aqui.
-          <button onclick="window.close()">Fechar</button>
-        </body>
-        </html>
-      `);
-      novaJanela.document.close();
-    }
-    function openCreditos() {
-      const novaJanela = window.open('', '_blank');
-      novaJanela.document.write(`
-        <!DOCTYPE html>
-        <html lang="pt-BR">
-        <head>
-          <title>Créditos</title>
-          <style>
-            body {
-              margin: 0; height: 100vh;
-              display: flex; justify-content: center; align-items: center;
-              font-family: Arial, sans-serif;
-              font-size: 24px;
-              color: white;
-              background-color: #000;
-              text-shadow:
-                -1px -1px 0 #000,
-                 1px -1px 0 #000,
-                -1px  1px 0 #000,
-                 1px  1px 0 #000;
-              flex-direction: column;
-            }
-            button {
-              margin-top: 20px;
-              padding: 10px 20px;
-              font-size: 1em;
-              border-radius: 8px;
-              cursor: pointer;
-              background-color: #fdd835;
-              border: none;
-              color: black;
-              box-shadow: 0 0 5px rgba(0,0,0,0.3);
-              transition: background-color 0.3s;
-            }
-            button:hover {
-              background-color: #fbc02d;
-            }
-          </style>
-        </head>
-        <body>
-          Eu &gt; Sammy. Me tirou de programador e agora você vai sofrer.
-          <button onclick="window.close()">Fechar</button>
-        </body>
-        </html>
-      `);
-      novaJanela.document.close();
-    }
-  </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Torneios do bl4cksz - Lista Negra do Museu</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e1e2f, #3a3a5c);
+            color: #f0f0f5;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            gap: 30px;
+        }
+        .container {
+            background: #2c2c44;
+            border-radius: 15px;
+            padding: 30px 40px;
+            max-width: 400px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.2rem;
+            color: #ff4c4c;
+            text-shadow: 0 0 8px #ff4c4c;
+        }
+        h2 {
+            font-weight: 400;
+            font-size: 1.2rem;
+            color: #bbb;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 auto;
+            max-width: 300px;
+            text-align: left;
+        }
+        ul li {
+            background: #41415f;
+            margin: 10px 0;
+            padding: 15px 20px;
+            border-radius: 12px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #ffbb33;
+            box-shadow: 0 4px 8px rgba(255, 187, 51, 0.5);
+            transition: transform 0.3s ease;
+            cursor: default;
+        }
+        ul li:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(255, 187, 51, 0.8);
+        }
+        .profile {
+            background: #2c2c44;
+            border-radius: 15px;
+            padding: 30px 40px;
+            max-width: 400px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            font-size: 1.1rem;
+            color: #ddd;
+            font-weight: 500;
+            line-height: 1.5;
+            text-align: center;
+            word-wrap: break-word;
+            white-space: normal;
+            user-select: none;
+        }
+        .profile strong {
+            display: block;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            color: #ff4c4c;
+            text-shadow: 0 0 6px #ff4c4c;
+        }
+    </style>
 </head>
 <body>
-  <div class="menu">
-    <div class="menu-item" onclick="showInputSection()">
-      Gerar Server privado
+    <div class="container">
+        <h1>bl4cksz</h1>
+        <h2>Lista Negra do Museu</h2>
+        <ul>
+            <li>32 Minimush's</li>
+            <li>204 Camp's</li>
+            <li>54 Flameleague's</li>
+        </ul>
     </div>
-    <div class="menu-item" onclick="openPrivacidade()">
-      Privacidade
+    <div class="profile">
+        <strong>SOBRE MIM</strong>
+        Oi, sou o bl4cksz, tenho 14 anos, tenho 1.154 reais na conta bancária, atualmente sou lista negra do mush, e ninguém me para🔥
     </div>
-    <div class="menu-item" onclick="openCreditos()">
-      Créditos / sobre
-    </div>
-  </div>
-
-  <div class="input-section" style="display:none;">
-    <input type="text" id="nameInput" placeholder="Digite seu nome" />
-    <button onclick="confirmName()">Confirmar</button>
-    <button class="back-btn" onclick="voltarPagina()">Voltar</button>
-  </div>
-
-  <div class="footer-credit">
-    Créditos: ex-programador do brain rot.
-  </div>
 </body>
 </html>
